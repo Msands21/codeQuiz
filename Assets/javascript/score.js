@@ -1,14 +1,35 @@
-//Acceptance Criteria:
-//TO DO: Make a start button
-    //Make a "VIEW HIGHSCORES" button
+//high score function
+function printScores() {
+    //getting scores from local storage or set to an empty array
 
-//TO DO: Timer starts when start button is clicked, first question is presented
+    //var playerScores = JSON.parse(window.localStorage.getItem("highscores"))
+    var playerScores = [];
 
-//TO DO: Once question is answered, present with another question
-    //Implement text if answer is correct/incorrect along with sounds
+    // sorting the different scorse in descending order
+    playerScores.sort(function(a, b) {
+        return b.scores - a.scores;
+    });
 
-//TO DO: Time subtracts from timer if answered incorrectly
+    playerScores.forEach(function(scores){
+    //create an li tag for scores
+        var liEl = document.createElement("li");
+        liEl.textContent = scores.initials + " - " + scores.scores;
+        
+        var olEl =document.querySelector("#highscores");
+        olEl.appendChild(liEl);
+    })
+};
 
-//TO DO: Game is over when when all questions are answered or timer reaches 0
+//clear high score function
+function deleteScores() {
+    // will remove items from local storage
+    localStorage.removeItem("highscores");
+    //reloads the page
+    localStorage.reload();
+}
 
-//TO DO: Save initials and score when game is over
+//event listener / click
+document.querySelector("#delete-scores").onclick = deleteScores;
+
+//callback function to run the page on load
+printScores ();

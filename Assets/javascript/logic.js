@@ -15,6 +15,7 @@ var submitBtn = document.querySelector("#submit");
 var startBtn = document.querySelector("#start");
 var initialsEl = document.querySelector("#initials");
 var feebackEl = document.querySelector("#feeback");
+
 var imgEl = document.querySelector(".img");
 
 //Quiestions for Quiz
@@ -67,11 +68,11 @@ function getQuestions() {
     //create a variable to get the current questions array
     var currentQuestions = questions[questionsIndex];
 
-    //update the code question title with current code
+    // update the code question title with current code
 
-    //clear out old question choices
+    // clear out old question choices
 
-    // loop over choices using forEach
+    // loop over choices using forEach (or for loop)
 
     // attach click event to listener
 
