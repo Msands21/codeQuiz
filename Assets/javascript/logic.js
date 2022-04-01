@@ -21,29 +21,29 @@ var imgEl = document.querySelector(".img");
 //Quiestions for Quiz
 var questions = [
     { 
-        title: "",
-        choices: ["", "", "", ""],
-        answer: ""
+        title: "How long is New Zealand's Ninety Mile Beach?",
+        choices: ["90 miles", "55 miles", "80 miles", "9 miles"],
+        answer: "55 miles"
     },
     {
-        title: "",
-        choices: ["", "", "", ""],
-        answer: ""
+        title: "How many months have 28 days in them?",
+        choices: ["1", "3", "12", "4"],
+        answer: "12"
     },
     {
-        title: "",
-        choices: ["", "", "", ""],
-        answer: ""
+        title: "What is the main ingredient of Bombay Duck?",
+        choices: ["Fish", "Duck", "Beef", "Eggs"],
+        answer: "Fish"
     },
     {
-        title: "",
-        choices: ["", "", "", ""],
-        answer: ""
+        title: "Which movie star entered a look-a-like contest of himself only to come in 3rd place?",
+        choices: ["Will Smith", "Matthew McConaughey", "Leonardo DiCaprio", "Charlie Chaplin"],
+        answer: "Charlie Chaplin"
     },
     {
-        title: "",
-        choices: ["", "", "", ""],
-        answer: ""
+        title: "How many brains does an octopus have?",
+        choices: ["1", "3", "7", "9"],
+        answer: "9"
     },    
 ];
 
