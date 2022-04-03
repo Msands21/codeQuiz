@@ -89,11 +89,6 @@ p {
     font-size: 4rem;
 }
 
-.timer {
-    display: inline;
-    font-size: 3rem;
-    float: right;
-}
 
 .hide {
     display: none
@@ -107,15 +102,72 @@ p {
     margin-bottom: 2rem
 }
 
-#start {
-    width: 15rem;
-    height: 5rem;
-    border-radius: 5rem;
-    font-size: 1.5rem;
-    font-family: Arial, Helvetica, sans-serif;
+.choice-contatiner {
+    display: flex;
+    margin-bottom: 0.8rem;
+    width: 100%;
+    border-radius: 6px;
+    background: whitesmoke;
+    font-size: 3rem;
+    min-width: 80rem;
+    margin-top: auto;
 }
 
-#start:hover {
-    color: green;
-    background-color: gold;
+.choice-contatiner:hover {
+    cursor: pointer;
+    box-shadow: 0 0.5rem 1.5rem 0 lightcyan;
+    transform: scale(1.02);
+    transform: transform 100ms;
+}
+
+.choice-prefix {
+    padding: 2rem 2.5rem;
+}
+
+.choice-text {
+    padding: 2rem;
+    width: 100%;
+}
+
+.correct {
+    background: greenyellow;
+}
+
+.incorrect {
+    background: red
+}
+
+#hud {
+    display: flex;
+    justify-content: space-between;
+}
+
+.hud-prefix {
+    text-align: center;
+    font-size: 2rem;
+}
+
+.hud-main-text {
+    text-align: center;
+}
+
+#progressBar {
+    height: 3rem;
+    width: 20rem;
+    border: 0.2rem solid darkcyan;
+    margin-top: 2rem;
+    border-radius: 50px;
+    overflow: hidden;
+}
+
+#progressBarFull {
+    height: 100%;
+    background: black;
+    width: 0%;
+}
+
+@media screen and (max-wdith: 768px) {
+    .choice-contatiner {
+        min-width: 40rem;
+    }
 }
