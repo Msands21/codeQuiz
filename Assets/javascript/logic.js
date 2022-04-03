@@ -2,12 +2,13 @@
 var questionsIndex = 0;
 
 //indexed at 0
-var time = questions.length * 15
+var time = questions.length * 15;
 
 //Allows you to keep a timer and score for quiz
 var timerId;
 
 // Variables to help Traverse the DOM
+
 var questionsEl = document.querySelector("#questions");
 var timerEl = document.querySelector("#time");
 var choicesEl = document.querySelector("#choices");
@@ -16,34 +17,33 @@ var startBtn = document.querySelector("#start");
 var initialsEl = document.querySelector("#initials");
 var feebackEl = document.querySelector("#feeback");
 
-var imgEl = document.querySelector(".img");
 
 //Quiestions for Quiz
 var questions = [
     { 
         title: "How long is New Zealand's Ninety Mile Beach?",
         choices: ["90 miles", "55 miles", "80 miles", "9 miles"],
-        answer: "55 miles"
+        answer: "55 miles",
     },
     {
         title: "How many months have 28 days in them?",
         choices: ["1", "3", "12", "4"],
-        answer: "12"
+        answer: "12",
     },
     {
         title: "What is the main ingredient of Bombay Duck?",
         choices: ["Fish", "Duck", "Beef", "Eggs"],
-        answer: "Fish"
+        answer: "Fish",
     },
     {
         title: "Which movie star entered a look-a-like contest of himself only to come in 3rd place?",
         choices: ["Will Smith", "Matthew McConaughey", "Leonardo DiCaprio", "Charlie Chaplin"],
-        answer: "Charlie Chaplin"
+        answer: "Charlie Chaplin",
     },
     {
         title: "How many brains does an octopus have?",
         choices: ["1", "3", "7", "9"],
-        answer: "9"
+        answer: "9",
     },    
 ];
 
@@ -51,13 +51,13 @@ var questions = [
 function beginQuiz() {
     //hide start screen during quiz
     var startQuizEl = document.querySelector("#start");
-    startScreenEl.setAttribute("class", "hide");
-
+    startQuizEl.setAttribute("class", "hide");
+    
     //Make questions appear on page
     questionsEl.removeAttribute("class");
-
+    
     //Start timer
-
+    timerCountDown();
     //Show starting time on page
 
     getQuestions();
@@ -117,7 +117,7 @@ function timerCountDown() {
         endQuiz();
     }
 }
-
+console.log(timerCountDown)
 //Save score
 function saveHighScores() {
     //get value from your input box 
