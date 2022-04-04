@@ -1,11 +1,3 @@
-// Variables to keep track of time
-var questionsIndex = 0;
-
-//indexed at 0
-var time = questions.length * 15;
-
-//Allows you to keep a timer and score for quiz
-var timerId;
 
 // Variables to help Traverse the DOM
 
@@ -18,14 +10,14 @@ var progressBarFull = document.querySelector("#progressBarFull");
 let currentQuestion = {}
 let acceptingAnswers = true
 let score = 0
-let quiestionCounter = 0
+let questionCounter = 0
 let availableQuestions = []
 
 
 //Quiestions for Quiz
-var questions = [
+let questions = [
     { 
-        title: "How long is New Zealand's Ninety Mile Beach?",
+        question: "How long is New Zealand's Ninety Mile Beach?",
         choice1: "90 miles",
         choice2: "55 miles",
         choice3: "80 miles",
@@ -33,7 +25,7 @@ var questions = [
         answer: 2,
     },
     {
-        title: "How many months have 28 days in them?",
+        question: "How many months have 28 days in them?",
         choice1: "1",
         choice2: "3",
         choice3: "12",
@@ -41,7 +33,7 @@ var questions = [
         answer: 3,
     },
     {
-        title: "What is the main ingredient of Bombay Duck?",
+        question: "What is the main ingredient of Bombay Duck?",
         choice1: "Fish",
         choice2: "Duck",
         choice3: "Beef",
@@ -49,7 +41,7 @@ var questions = [
         answer: 1,
     },
     {
-        title: "Which movie star entered a look-a-like contest of himself only to come in 3rd place?",
+        question: "Which movie star entered a look-a-like contest of himself only to come in 3rd place?",
         choice1: "Will Smith",
         choice2: "Matthew McConaughey",
         choice3: "Leonardo DiCaprio",
@@ -57,12 +49,77 @@ var questions = [
         answer: 4,
     },
     {
-        title: "How many brains does an octopus have?",
+        question: "How many brains does an octopus have?",
         choice1: "1",
-        chocie2: "3",
+        chocie2: "2",
         choice3:"7",
         choice4: "9",
         answer: 4,
     },    
 ];
 
+const SCORE_POINTS = 100
+const MAX_QUESTIONS = 5
+
+startGame = () => {
+    questionCounter = 0;
+    score = 0;
+    availableQuestions = [...questions];
+    getNewQuestion();
+};
+
+getNewQuestion = () => {
+    if (availableQuestions.length === 0 || questionCounter > MAX_QUESTIONS) {
+        localStorage.setItem("mostRecentScore", score)
+
+        return window.location.assign("/end.html")
+    }
+
+    //Changing status bar 
+    questionCounter++
+    progressText.innerHTML = `Question ${questionCounter} of ${MAX_QUESTIONS}`
+    progressBarFull.style.width = `${(questionCounter/MAX_QUESTIONS) * 100}%`
+
+    const questionsIndex = Math.floor(Math.random() * availableQuestions.length)
+    currentQuestion = availableQuestions[questionsIndex]
+    question.innerHTML = currentQuestion.question
+
+    choices.forEach(choice => {
+        const number = choice.dataset["number"]
+        choice.innerHTML = currentQuestion["choice" + number]
+    })
+
+    availableQuestions.splice(questionsIndex, 1)
+
+    acceptingAnswers = true
+}
+
+choices.forEach(choice=> {
+    choice.addEventListener("click", e => {
+        if (!acceptingAnswers) return
+
+        acceptingAnswers = false
+        const selectedChoice = e.target
+        const selectedAnswer = selectedChoice.dataset["number"]
+
+        let classToApply = selectedAnswer == currentQuestion.answer ? "correct" : "incorrect"
+
+        if(classToApply === "correct") {
+            incrementScore(SCORE_POINTS)
+        }
+
+        selectedChoice.parentElement.classList.add(classToApply)
+
+        setTimeout(() => {
+            selectedChoice.parentElement.classList.remove(classToApply)
+            getNewQuestion()
+        }, 1000)
+    })
+})
+
+incrementScore = num => {
+    score +=num
+    scoreText.innerHTML = score
+}
+
+startGame()
