@@ -166,8 +166,43 @@ p {
     width: 0%;
 }
 
-@media screen and (max-wdith: 768px) {
-    .choice-contatiner {
-        min-width: 40rem;
-    }
+.end-form-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    max-width: 30rem;
 }
+
+input {
+    margin-bottom: 1rem;
+    width: 20rem;
+    font-size: 1.8rem;
+    padding: 1.5rem;
+    border: none;
+}
+
+input::placeholder {
+    color: azure;
+}
+
+#username {
+    width: 100%;
+    margin-bottom: 3rem;
+    outline: none;
+}
+
+#end-text {
+    font-size: 2.4rem;
+    color: black;
+    text-align: center;
+}
+
+#saveScoreBtn:hover {
+    cursor: pointer;
+    box-shadow: 0 0.5rem 1.5rem 0 lightcyan;
+    transform: scale(1.02);
+    transform: transform 100ms;
+}
+
+

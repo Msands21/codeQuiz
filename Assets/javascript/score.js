@@ -1,3 +1,16 @@
+const highScoresList = document.querySelector('#highScoresList')
+const highScores = JSON.parse(localStorage.getItem('highScores')) || []
+const deleteHighScores = document.querySelector("#delete-scores");
+
+
+
+highScoresList.innerHTML =
+highScores.map(score => {
+    return `<li class="high-score">${score.name} - ${score.score}</li>`
+}).join('')
+
+
+
 //high score function
 function printScores() {
     //getting scores from local storage or set to an empty array
@@ -23,13 +36,18 @@ function printScores() {
 //clear high score function
 function deleteScores() {
     // will remove items from local storage
-    localStorage.removeItem("highscores");
-    //reloads the page
-    localStorage.reload();
+    localStorage.removeItem("highScores");
+
+    // Reload everything:
+    function reload() {
+    reload = location.reload();
+    }
+// Event listeners for reload
+deleteHighScores.addEventListener("click", reload, false)
 }
 
-//event listener / click
-document.querySelector("#delete-scores").onclick = deleteScores;
+
+
 
 //callback function to run the page on load
 printScores ();

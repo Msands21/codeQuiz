@@ -58,13 +58,14 @@ let questions = [
     },    
 ];
 
-const SCORE_POINTS = 100
+var  = timer
 const MAX_QUESTIONS = 5
 
 startGame = () => {
     questionCounter = 0;
     score = 0;
     availableQuestions = [...questions];
+    timer();
     getNewQuestion();
 };
 
@@ -72,7 +73,7 @@ getNewQuestion = () => {
     if (availableQuestions.length === 0 || questionCounter > MAX_QUESTIONS) {
         localStorage.setItem("mostRecentScore", score)
 
-        return window.location.assign("/end.html")
+        return window.location.assign("end.html")
     }
 
     //Changing status bar 
@@ -105,7 +106,7 @@ choices.forEach(choice=> {
         let classToApply = selectedAnswer == currentQuestion.answer ? "correct" : "incorrect"
 
         if(classToApply === "correct") {
-            incrementScore(SCORE_POINTS)
+            incrementScore(score)
         }
 
         selectedChoice.parentElement.classList.add(classToApply)
@@ -120,6 +121,17 @@ choices.forEach(choice=> {
 incrementScore = num => {
     score +=num
     scoreText.innerHTML = score
+}
+
+function timer(){
+    var sec = 30;
+    var timer = setInterval(function(){
+        document.getElementById('score').innerHTML='00:'+sec;
+        sec--;
+        if (sec < 0) {
+            clearInterval(timer);
+        }
+    }, 1000);
 }
 
 startGame()

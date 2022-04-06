@@ -5,15 +5,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>High Scores</title>
+    <link rel="stylesheet" href="./Assets/css/highscore.css">
     <link rel="stylesheet" href="./Assets/css/style.css">
 </head>
 <body>
     <div class="wrapper">
-        <h1>Highscores:</h1>
-        <ol id="highscores"></ol>
 
-        <a href="index.html"><button>Go Back</button></a>
-        <button id="delete-scores">Clear Highscores</button>
+        <div id="highscores" class="flex-center flex-column">
+            <h1 id="finalScore">Highscores</h1>
+            <ul class="" id="highScoresList"></ul>
+            <a href="index.html" class="btn">Go Home</a>
+            <button onclick="deleteScores();"" id="delete-scores" class="btn">Clear Highscores</button>
+        </div>
     </div>
     <script src="./Assets/javascript/score.js"></script>
 </body>
