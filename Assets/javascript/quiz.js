@@ -58,7 +58,7 @@ let questions = [
     },    
 ];
 
-var  = timer
+var MAX_SCORE
 const MAX_QUESTIONS = 5
 
 startGame = () => {
